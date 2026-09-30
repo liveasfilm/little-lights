@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>불 켜진 집 · Little Lights</title>
+  <meta name="description" content="스위치를 눌러 동물 가족의 집을 밝히는 손그림 퍼즐. Hand-drawn switch & wiring puzzles — light up 500 animal homes." />
+  <meta property="og:title" content="불 켜진 집 · Little Lights" />
+  <meta property="og:description" content="스위치를 눌러 동물 가족의 집을 밝혀요 · Cozy switch & wiring puzzles" />
+  <meta property="og:image" content="https://liveasfilm.github.io/little-lights/img/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="apple-itunes-app" content="app-id=6812945468" />
+  <link rel="icon" href="img/icon.png" />
+  <link rel="apple-touch-icon" href="img/icon.png" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fbf1e3;
+      --bg2: #f4e2c9;
+      --card: #fffaf2;
+      --fg: #4a3426;
+      --muted: #8a6f5c;
+      --line: #e8d5bb;
+      --accent: #e7a93c;
+      --btn: #4a3426;
+      --btn-fg: #fffaf2;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #221a15;
+        --bg2: #2c221b;
+        --card: #33281f;
+        --fg: #f5e8d6;
+        --muted: #c2a98f;
+        --line: #4a3a2d;
+        --accent: #f0b84e;
+        --btn: #f5e8d6;
+        --btn-fg: #221a15;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: linear-gradient(180deg, var(--bg2), var(--bg) 480px);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+    header.top { display: flex; justify-content: flex-end; padding: 16px 0 0; }
+    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--card); }
+    .lang button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 14px; padding: 6px 14px; cursor: pointer; }
+    .lang button[aria-pressed="true"] { background: var(--btn); color: var(--btn-fg); }
+    .hero { text-align: center; padding: 32px 0 24px; }
+    .hero img.icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(74, 52, 38, .18); }
+    h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.2; margin: 20px 0 8px; letter-spacing: -0.01em; }
+    .tagline { font-size: clamp(17px, 2.6vw, 21px); color: var(--muted); margin: 0 auto 28px; max-width: 34em; }
+    .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .store { display: inline-flex; align-items: center; gap: 10px; min-width: 200px; justify-content: center; padding: 12px 22px; border-radius: 14px; text-decoration: none; font-weight: 600; background: var(--btn); color: var(--btn-fg); }
+    .store svg { width: 22px; height: 22px; fill: currentColor; }
+    .store small { display: block; font-weight: 400; font-size: 12px; opacity: .8; line-height: 1.2; }
+    .store span { text-align: left; line-height: 1.25; }
+    .store.soon { background: transparent; color: var(--muted); border: 1px dashed var(--line); pointer-events: none; }
+    .shots { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 36px 20px 28px; margin: 0 -20px; -webkit-overflow-scrolling: touch; }
+    .shots img { flex: 0 0 auto; width: 240px; aspect-ratio: 1242 / 2688; height: auto; border-radius: 22px; scroll-snap-align: center; box-shadow: 0 8px 26px rgba(74, 52, 38, .16); background: var(--card); }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 12px 0 40px; }
+    .feature { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+    .feature .em { font-size: 28px; line-height: 1; }
+    .feature h2 { font-size: 18px; margin: 12px 0 6px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+    .closing { text-align: center; font-size: 19px; padding: 8px 0 40px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 40px; text-align: center; color: var(--muted); font-size: 14px; }
+    footer a { color: inherit; }
+    footer nav { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; }
+    [data-lang="en"] .ko, [data-lang="ko"] .en { display: none !important; }
+  </style>
+</head>
+<body data-lang="ko">
+  <div class="wrap">
+    <header class="top">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set="ko" aria-pressed="true">한국어</button>
+        <button type="button" data-set="en" aria-pressed="false">English</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <img class="icon" src="img/icon.png" alt="" width="112" height="112" />
+      <h1><span class="ko">불 켜진 집</span><span class="en">Little Lights</span></h1>
+      <p class="tagline">
+        <span class="ko">벽 스위치 하나를 눌렀는데 엉뚱한 방의 불이 켜진다면? 숨은 배선을 추리해 동물 가족의 저녁을 밝혀 주세요.</span>
+        <span class="en">You press a little wall switch — and a lamp comes on in the wrong room. Work out the hidden wiring and light up dinner for the animal families.</span>
+      </p>
+      <div class="stores">
+        <a class="store" href="https://apps.apple.com/app/id6812945468">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.62c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.51 1.25-2.58-.03-.01-2.39-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>
+          <span><small class="ko">다운로드</small><small class="en">Download on the</small>App Store</span>
+        </a>
+        <span class="store soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8 2.6 2.6-11.3 6.4 8.7-9zm0-2.2L5.7 1.9 17 8.3l-2.6 2.6zm3.9-1.9 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-2.8-2.6 2.8-2.6z"/></svg>
+          <span><small class="ko">곧 출시</small><small class="en">Coming soon to</small>Google Play</span>
+        </span>
+      </div>
+    </section>
+
+    <div class="shots" id="shots" aria-label="Screenshots"></div>
+
+    <section class="features">
+      <div class="feature">
+        <div class="em" aria-hidden="true">💡</div>
+        <h2><span class="ko">관찰하고 추리해요</span><span class="en">Watch and deduce</span></h2>
+        <p><span class="ko">스위치를 누르면 불빛이 바로 반응해요. 어느 스위치가 어느 방과 이어졌는지 찾아 최소 조작으로 별 셋을 모아요.</span><span class="en">Tap a switch and the lights answer instantly. Find which switch feeds which room and earn three stars with the fewest flips.</span></p>
+      </div>
+      <div class="feature">
+        <div class="em" aria-hidden="true">🏡</div>
+        <h2><span class="ko">500개의 이야기</span><span class="en">500 little stories</span></h2>
+        <p><span class="ko">곰·토끼·다람쥐·두더지 가족의 집부터 눈꽃 놀이공원, 숲별 극장, 치즈별 우주 정거장까지 25개 무대.</span><span class="en">From the homes of bear, rabbit, squirrel and mole families to a snowy fairground, a forest theater and a space station — 25 places.</span></p>
+      </div>
+      <div class="feature">
+        <div class="em" aria-hidden="true">🔌</div>
+        <h2><span class="ko">천천히 깊어지는 퍼즐</span><span class="en">Puzzles that deepen gently</span></h2>
+        <p><span class="ko">두 스위치가 함께 필요한 불, 반대로 동작하는 배선, 배선함 선택까지. 막히면 힌트가 쉬운 말로 알려 줘요.</span><span class="en">Lights that need two switches, wiring that works in reverse, a selector box. Stuck? A hint explains it in plain words.</span></p>
+      </div>
+      <div class="feature">
+        <div class="em" aria-hidden="true">🎨</div>
+        <h2><span class="ko">따뜻한 손그림</span><span class="en">Warm hand-drawn art</span></h2>
+        <p><span class="ko">30채의 방 원화와 420컷의 생활 장면. 인터넷 없이 즐기고, 진행은 자동 저장돼요. 전체 이용가.</span><span class="en">30 room paintings and 420 everyday scenes. Plays offline, saves automatically, rated for everyone.</span></p>
+      </div>
+    </section>
+
+    <p class="closing"><span class="ko">작은 스위치로 작은 불빛을. 오늘 저녁도 불 켜진 집에서.</span><span class="en">Small switches, small lights. Come home to Little Lights.</span></p>
+
+    <footer>
+      <nav>
+        <a href="https://liveasfilm.github.io/little-lights-privacy/"><span class="ko">개인정보처리방침</span><span class="en">Privacy Policy</span></a>
+        <a href="mailto:liveasfilm@gmail.com"><span class="ko">문의하기</span><span class="en">Contact</span></a>
+      </nav>
+      © 2026 liveasfilm
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var SHOTS = ["01-title", "02-bear-dinner", "03-success", "04-amusement-park", "05-theater", "07-tutorial", "06-tutorial-hint", "08-space-station"];
+      var shots = document.getElementById("shots");
+      var buttons = document.querySelectorAll(".lang button");
+
+      function setLang(lang) {
+        document.body.dataset.lang = lang;
+        document.documentElement.lang = lang;
+        document.title = lang === "ko" ? "불 켜진 집 · Little Lights" : "Little Lights: Switch Puzzle";
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.set === lang)); });
+        shots.innerHTML = SHOTS.map(function (n) {
+          return '<img loading="lazy" width="240" height="519" alt="" src="img/' + lang + "/" + n + '.webp" />';
+        }).join("");
+        try { localStorage.setItem("lang", lang); } catch (e) {}
+      }
+
+      buttons.forEach(function (b) { b.addEventListener("click", function () { setLang(b.dataset.set); }); });
+
+      var q = new URLSearchParams(location.search).get("lang");
+      var saved = null;
+      try { saved = localStorage.getItem("lang"); } catch (e) {}
+      var nav = (navigator.language || "ko").toLowerCase().indexOf("ko") === 0 ? "ko" : "en";
+      var lang = q === "ko" || q === "en" ? q : (saved === "ko" || saved === "en" ? saved : nav);
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>
